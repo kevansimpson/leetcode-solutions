@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.base.leetcode.interview75.dfs.TreeNode.fromString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -50,5 +51,24 @@ public class BinaryTreeDfsTests {
         assertEquals(4, goodNodes.goodNodes(example1));
         assertEquals(3, goodNodes.goodNodes(example2));
         assertEquals(1, goodNodes.goodNodes(new TreeNode(1)));
+    }
+
+    @Test
+    public void testPathSum3() {
+        TreeNode example1 = new TreeNode(10,
+                new TreeNode(5,
+                        new TreeNode(3,
+                                new TreeNode(3), new TreeNode(-2)),
+                        new TreeNode(2, null, new TreeNode(1))),
+                new TreeNode(-3, null, new TreeNode(11)));
+        TreeNode example1a = fromString("[10,5,-3,3,2,null,11,3,-2,null,1]");
+        assertEquals(example1, example1a);
+
+        PathSum3 pathSum3 = new PathSum3();
+        assertEquals(3, pathSum3.pathSum(example1, 8));
+        assertEquals(2, pathSum3.pathSum(fromString(
+                "[1,null,2,null,3,null,4,null,5]"), 3));
+        assertEquals(0, pathSum3.pathSum(fromString(
+                "[1000000000,1000000000,null,294967296,null,1000000000,null,1000000000,null,1000000000]"), 0));
     }
 }
