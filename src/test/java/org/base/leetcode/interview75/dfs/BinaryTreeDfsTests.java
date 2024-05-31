@@ -36,4 +36,19 @@ public class BinaryTreeDfsTests {
         assertEquals(List.of(6, 7, 4, 9, 8), leaves);
         assertTrue(simLeafs.leafSimilar(example1, example1));
     }
+
+    @Test
+    public void testCountGoodNodes() {
+        TreeNode example1 = new TreeNode(3,
+                new TreeNode(1, new TreeNode(3), null),
+                new TreeNode(4, new TreeNode(1), new TreeNode(5)));
+        TreeNode example2 = new TreeNode(3,
+                new TreeNode(3, new TreeNode(4), new TreeNode(2)),
+                null);
+
+        CountGoodNodesBinaryTree goodNodes = new CountGoodNodesBinaryTree();
+        assertEquals(4, goodNodes.goodNodes(example1));
+        assertEquals(3, goodNodes.goodNodes(example2));
+        assertEquals(1, goodNodes.goodNodes(new TreeNode(1)));
+    }
 }
