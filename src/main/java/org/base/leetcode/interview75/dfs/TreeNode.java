@@ -17,26 +17,18 @@ public class TreeNode {
     }
 
     @Override
-    public int hashCode() {
-        int hash = 7 * val;
-        if (left != null)
-            hash += 13 * left.hashCode();
-        if (right != null)
-            hash += 11 * right.hashCode();
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj instanceof TreeNode) {
-            return this.hashCode() == obj.hashCode();
-        }
-        return false;
-    }
-
-    @Override
     public String toString() {
         return String.format("[%d,%s,%s]", val, left, right);
+    }
+
+    public static boolean equals(TreeNode node1, TreeNode node2) {
+        if (node1 == null) {
+            return node2 == null;
+        }
+        else if (node2 == null)
+            return false;
+
+        return node1.val == node2.val && equals(node1.left, node2.left) && equals(node1.right, node2.right);
     }
 
     public static TreeNode fromString(String str) {
