@@ -75,11 +75,11 @@ public class BinaryTreeDfsTests {
     @Test
     public void testLongestZigZag() {
         LongestZigZagPath zigZag = new LongestZigZagPath();
-//        assertEquals(3, zigZag.longestZigZag(fromString(
-//                "[1,null,1,1,1,null,null,1,1,null,1,null,null,null,1]")));
-//        assertEquals(4, zigZag.longestZigZag(fromString(
-//                "[1,1,1,null,1,null,null,1,1,null,1]")));
-//        assertEquals(0, zigZag.longestZigZag(fromString("[1]")));
+        assertEquals(3, zigZag.longestZigZag(fromString(
+                "[1,null,1,1,1,null,null,1,1,null,1,null,null,null,1]")));
+        assertEquals(4, zigZag.longestZigZag(fromString(
+                "[1,1,1,null,1,null,null,1,1,null,1]")));
+        assertEquals(0, zigZag.longestZigZag(fromString("[1]")));
         assertEquals(2, zigZag.longestZigZag(fromString(
                 "[1,1,1,1,1,1,1,null,null,null,null,null,null,1,1,null,null,1]")));
     }
