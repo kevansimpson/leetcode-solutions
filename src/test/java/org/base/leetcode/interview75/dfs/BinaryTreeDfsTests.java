@@ -6,8 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.base.leetcode.interview75.dfs.TreeNode.fromString;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryTreeDfsTests {
 
@@ -62,7 +61,7 @@ public class BinaryTreeDfsTests {
                         new TreeNode(2, null, new TreeNode(1))),
                 new TreeNode(-3, null, new TreeNode(11)));
         TreeNode example1a = fromString("[10,5,-3,3,2,null,11,3,-2,null,1]");
-        assertEquals(example1, example1a);
+        assertTrue(TreeNode.equals(example1, example1a));
 
         PathSum3 pathSum3 = new PathSum3();
         assertEquals(3, pathSum3.pathSum(example1, 8));
@@ -82,5 +81,29 @@ public class BinaryTreeDfsTests {
         assertEquals(0, zigZag.longestZigZag(fromString("[1]")));
         assertEquals(2, zigZag.longestZigZag(fromString(
                 "[1,1,1,1,1,1,1,null,null,null,null,null,null,1,1,null,null,1]")));
+    }
+
+    @Test
+    public void testLowestCommonAncestor() {
+        LowestCommonAncestor lca = new LowestCommonAncestor();
+        TreeNode example1 = fromString("[3,5,1,6,2,0,8,null,null,7,4]");
+        TreeNode actual1 = lca.lowestCommonAncestor(example1, example1.left, example1.right);
+        assertNotNull(actual1);
+        assertEquals(3, actual1.val);
+        assertEquals(example1, actual1);
+
+        TreeNode example2 = fromString("[3,5,1,6,2,0,8,null,null,7,4]");
+        TreeNode actual2 = lca.lowestCommonAncestor(example2,
+                example2.left, example2.left.right.right);
+        assertNotNull(actual2);
+        assertEquals(5, actual2.val);
+        assertEquals(example2.left, actual2);
+
+        TreeNode example3 = fromString("[1,2]");
+        TreeNode actual3 = lca.lowestCommonAncestor(example3,
+                example3, example3.left);
+        assertNotNull(actual3);
+        assertEquals(1, actual3.val);
+        assertEquals(example3, actual3);
     }
 }
