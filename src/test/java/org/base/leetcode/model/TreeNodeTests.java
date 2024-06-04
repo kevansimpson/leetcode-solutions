@@ -3,6 +3,7 @@ package org.base.leetcode.model;
 import org.junit.jupiter.api.Test;
 
 import static org.base.leetcode.model.TreeNode.fromString;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TreeNodeTests {
@@ -36,5 +37,6 @@ public class TreeNodeTests {
                 null);
         assertTrue(TreeNode.equals(example2, fromString(
                 "[1000000000,1000000000,null,294967296,null,1000000000,null,1000000000,null,1000000000]")));
+        assertNull(TreeNode.fromString("[]"));
     }
 }

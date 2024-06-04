@@ -33,6 +33,8 @@ public class TreeNode {
 
     public static TreeNode fromString(String str) {
         str = str.replace("[", "").replace("]", "");
+        if (str.length() == 0)
+            return null;
         String[] arr = str.split(",");
         TreeNode root = new TreeNode(Integer.parseInt(arr[0]));
         List<TreeNode> nodeList = new ArrayList<>();
