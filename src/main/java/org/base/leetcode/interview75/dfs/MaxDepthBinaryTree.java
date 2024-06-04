@@ -1,5 +1,7 @@
 package org.base.leetcode.interview75.dfs;
 
+import org.base.leetcode.model.TreeNode;
+
 /**
  * <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/?envType=study-plan-v2&envId=leetcode-75">
  *     Maximum Depth of Binary Tree</a>

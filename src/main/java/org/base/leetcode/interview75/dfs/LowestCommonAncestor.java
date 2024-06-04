@@ -1,6 +1,6 @@
 package org.base.leetcode.interview75.dfs;
 
-import com.sun.source.tree.Tree;
+import org.base.leetcode.model.TreeNode;
 
 import java.util.*;
 

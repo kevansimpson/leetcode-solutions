@@ -1,8 +1,8 @@
-package org.base.leetcode.interview75.dfs;
+package org.base.leetcode.model;
 
 import org.junit.jupiter.api.Test;
 
-import static org.base.leetcode.interview75.dfs.TreeNode.fromString;
+import static org.base.leetcode.model.TreeNode.fromString;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TreeNodeTests {

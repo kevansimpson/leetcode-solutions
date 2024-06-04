@@ -1,16 +1,16 @@
-package org.base.leetcode.interview75.dfs;
+package org.base.leetcode.model;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TreeNode {
-    int val;
-    TreeNode left;
-    TreeNode right;
+    public int val;
+    public TreeNode left;
+    public TreeNode right;
 
-    TreeNode() {}
-    TreeNode(int v) { val = v; }
-    TreeNode(int v, TreeNode l, TreeNode r) {
+    public TreeNode() {}
+    public TreeNode(int v) { val = v; }
+    public TreeNode(int v, TreeNode l, TreeNode r) {
         this(v);
         left = l;
         right = r;

@@ -1,11 +1,12 @@
 package org.base.leetcode.interview75.dfs;
 
+import org.base.leetcode.model.TreeNode;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.base.leetcode.interview75.dfs.TreeNode.fromString;
+import static org.base.leetcode.model.TreeNode.fromString;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BinaryTreeDfsTests {

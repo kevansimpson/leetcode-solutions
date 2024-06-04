@@ -1,5 +1,7 @@
 package org.base.leetcode.interview75.dfs;
 
+import org.base.leetcode.model.TreeNode;
+
 /**
  * <a href="https://leetcode.com/problems/count-good-nodes-in-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75">
  *     Count Good Nodes in Binary Tree</a>

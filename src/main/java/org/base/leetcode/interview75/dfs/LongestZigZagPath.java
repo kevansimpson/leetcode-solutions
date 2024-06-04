@@ -1,5 +1,7 @@
 package org.base.leetcode.interview75.dfs;
 
+import org.base.leetcode.model.TreeNode;
+
 /**
  * <a href="https://leetcode.com/problems/longest-zigzag-path-in-a-binary-tree/description/?envType=study-plan-v2&envId=leetcode-75">
  *     1372. Longest ZigZag Path in a Binary Tree</a>
