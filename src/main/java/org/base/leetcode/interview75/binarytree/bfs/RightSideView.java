@@ -1,4 +1,4 @@
-package org.base.leetcode.interview75.bfs;
+package org.base.leetcode.interview75.binarytree.bfs;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ import org.base.leetcode.model.TreeNode;
  * </p>
  *
  */
-public class BinaryTreeRightSideView {
+public class RightSideView {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> rightSide = new ArrayList<>();
         if (root != null) {

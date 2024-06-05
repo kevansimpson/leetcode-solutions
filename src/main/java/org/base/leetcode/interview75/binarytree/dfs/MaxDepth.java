@@ -1,4 +1,4 @@
-package org.base.leetcode.interview75.dfs;
+package org.base.leetcode.interview75.binarytree.dfs;
 
 import org.base.leetcode.model.TreeNode;
 
@@ -12,7 +12,7 @@ import org.base.leetcode.model.TreeNode;
  * </p>
  *
  */
-public class MaxDepthBinaryTree {
+public class MaxDepth {
     public int maxDepth(TreeNode root) {
         return maxDepth(root, 0);
     }

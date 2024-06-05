@@ -1,5 +1,7 @@
-package org.base.leetcode.interview75.bfs;
+package org.base.leetcode.interview75.binarytree.bfs;
 
+import org.base.leetcode.interview75.binarytree.bfs.RightSideView;
+import org.base.leetcode.interview75.binarytree.bfs.MaxLevelSum;
 import org.base.leetcode.model.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -11,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class BinaryTreeBfsTests {
     @Test
     public void testBinaryTreeRightSideView() {
-        BinaryTreeRightSideView rsv = new BinaryTreeRightSideView();
+        RightSideView rsv = new RightSideView();
         TreeNode example1 = fromString("[1,2,3,null,5,null,4]");
         assertEquals(List.of(1, 3, 4), rsv.rightSideView(example1));
         TreeNode example2 = fromString("[1,null,3]");

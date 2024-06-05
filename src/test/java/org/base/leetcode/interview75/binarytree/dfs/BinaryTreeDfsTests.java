@@ -1,5 +1,6 @@
-package org.base.leetcode.interview75.dfs;
+package org.base.leetcode.interview75.binarytree.dfs;
 
+import org.base.leetcode.interview75.binarytree.dfs.*;
 import org.base.leetcode.model.TreeNode;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class BinaryTreeDfsTests {
                 new TreeNode(9),
                 new TreeNode(20,
                         new TreeNode(15), new TreeNode(7)));
-        MaxDepthBinaryTree maxDepth = new MaxDepthBinaryTree();
+        MaxDepth maxDepth = new MaxDepth();
         assertEquals(3, maxDepth.maxDepth(example1));
     }
 
@@ -47,7 +48,7 @@ public class BinaryTreeDfsTests {
                 new TreeNode(3, new TreeNode(4), new TreeNode(2)),
                 null);
 
-        CountGoodNodesBinaryTree goodNodes = new CountGoodNodesBinaryTree();
+        CountGoodNodes goodNodes = new CountGoodNodes();
         assertEquals(4, goodNodes.goodNodes(example1));
         assertEquals(3, goodNodes.goodNodes(example2));
         assertEquals(1, goodNodes.goodNodes(new TreeNode(1)));

@@ -1,4 +1,4 @@
-package org.base.leetcode.interview75.bfs;
+package org.base.leetcode.interview75.binarytree.bfs;
 
 import org.base.leetcode.model.TreeNode;
 
