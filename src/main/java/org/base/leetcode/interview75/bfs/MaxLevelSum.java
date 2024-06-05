@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <a href="https://leetcode.com/problems/binary-tree-right-side-view/description/?envType=study-plan-v2&envId=leetcode-75">
- *     199. Binary Tree Right Side View</a>
+ * <a href="https://leetcode.com/problems/maximum-level-sum-of-a-binary-tree/submissions/1277992519/?envType=study-plan-v2&envId=leetcode-75">
+ *     1161. Maximum Level Sum of a Binary Tree</a>
  * <p>
  *     Stats:
  *     Runtime:    9ms (43.82%)
