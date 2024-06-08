@@ -1,24 +1,21 @@
 package org.base.leetcode.interview75.graphs.dfs;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * <a href="https://leetcode.com/problems/number-of-provinces/?envType=study-plan-v2&envId=leetcode-75">
  *     547. Number of Provinces</a>
  * <p>
  *     Stats:
- *     Runtime:    3ms (37.40%)
- *     Memory: 47.55mb (56.90%)
+ *     Runtime:    0ms (100.00%)
+ *     Memory: 44.33mb  (99.69%)
  * </p>
  */
 public class NumberOfProvinces {
     public int findCircleNum(int[][] isConnected) {
-        Set<Integer> visited = new HashSet<>();
+        boolean[] visited = new boolean[isConnected.length];
         int provinces = 0;
 
         for (int row = 0; row < isConnected.length; row++) {
-            if (!visited.contains(row)) {
+            if (!visited[row]) {
                 fillProvince(row, isConnected, visited);
                 provinces++;
             }
@@ -26,12 +23,12 @@ public class NumberOfProvinces {
         return provinces;
     }
 
-    void fillProvince(int row, int[][] matrix, Set<Integer> visited) {
-        visited.add(row);
+    void fillProvince(int row, int[][] matrix, boolean[] visited) {
+        visited[row] = true;
         for (int col = 0; col < matrix.length; col++) {
-            if (!visited.contains(col)) {
+            if (!visited[col]) {
                 if (matrix[row][col] == 1) {
-                    visited.add(col);
+                    visited[col] = true;
                     if (col != row)
                         fillProvince(col, matrix, visited);
                 }
