@@ -18,12 +18,18 @@ public class HelperTests {
     @Test
     public void testToNestedArray() {
         String[][] expected1 = new String[][] { {"1"}, {"2"}, {"3"}, {} };
-        String[][] actual1 = toNestedArray("[[1],[2],[3],[]]");
-        assertNestedArrayEquals(expected1, actual1);
+        assertNestedArrayEquals(expected1, toNestedArray("[[1],[2],[3],[]]"));
 
         String[][] expected2 = new String[][] { {"1","3"}, {"3","0","1"}, {"2"}, {"0"} };
-        String[][] actual2 = toNestedArray("[[1,3],[3,0,1],[2],[0]]");
-        assertNestedArrayEquals(expected2, actual2);
+        assertNestedArrayEquals(expected2, toNestedArray("[[1,3],[3,0,1],[2],[0]]"));
+    }
+
+    @Test
+    public void testToNestedIntArray() {
+        int[][] expected1 = new int[][]{{1,1,0},{1,1,0},{0,0,1}};
+        assertArrayEquals(expected1, toNestedIntArray("[[1,1,0],[1,1,0],[0,0,1]]"));
+        int[][] expected2 = new int[][]{{1,0,0},{0,1,0},{0,0,1}};
+        assertArrayEquals(expected2, toNestedIntArray("[[1,0,0],[0,1,0],[0,0,1]]"));
     }
 
     @Test

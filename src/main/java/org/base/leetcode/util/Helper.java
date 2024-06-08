@@ -6,7 +6,8 @@ import java.util.function.Function;
 
 public class Helper {
     public static String[] toArray(String str) {
-        str = str.substring(1, str.length() - 1);
+        if (str.startsWith("["))
+            str = str.substring(1, str.length() - 1);
         return str.split(",\\s?");
     }
 
@@ -16,6 +17,18 @@ public class Helper {
         String[][] matrix = new String[arr.length][];
         for (int i = 0; i < arr.length; i++) {
             matrix[i] = (arr[i].isBlank()) ? new String[0] : arr[i].split(",\\s?");
+        }
+
+        return matrix;
+    }
+
+
+    public static int[][] toNestedIntArray(String str) {
+        str = str.substring(2, str.length() - 2);
+        String[] arr = str.split("],\\[", -1);
+        int[][] matrix = new int[arr.length][];
+        for (int i = 0; i < arr.length; i++) {
+            matrix[i] = (arr[i].isBlank()) ? new int[0] : toIntArray(arr[i]);
         }
 
         return matrix;
