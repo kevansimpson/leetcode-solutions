@@ -7,35 +7,42 @@ import java.util.*;
  *     547. Number of Provinces</a>
  * <p>
  *     Stats:
- *     Runtime:   80ms  (43.97%)
- *     Memory: 70.90mb  (71.78%)
+ *     Runtime:   34ms  (87.33%)
+ *     Memory: 69.41mb  (76.14%)
  * </p>
  */
 public class ReorderRoutes {
+    public record Road(int node, int weight) {}
+
     public int minReorder(int n, int[][] connections) {
-        List<List<Integer>> roads = new ArrayList<>();
+        Deque<Road>[] roads = new Deque[n];
         for (int i = 0; i < n; i++)
-            roads.add(new ArrayList<>());
+            roads[i] = new LinkedList<>();
 
         for (int[] r : connections) {
-            roads.get(r[0]).add(r[1]);
-            roads.get(r[1]).add(-r[0]);
+            roads[r[0]].add(new Road(r[1], 1));
+            roads[r[1]].add(new Road(r[0], 0));
         }
 
-        Set<Integer> visited = new HashSet<>();
-        visited.add(0);
-        return findNode(0, roads, visited);
-    }
-
-    int findNode(int node, List<List<Integer>> roads, Set<Integer> visited) {
+        boolean[] visited = new boolean[n];
         int count = 0;
-        for (int n : roads.get(node)) {
-            if (!visited.contains(Math.abs(n))) {
-                visited.add(Math.abs(n));
-                if (n > 0) count++;
-                count += findNode(Math.abs(n), roads, visited);
+        Deque<Integer> stack = new LinkedList<>();
+        stack.add(0);
+        while (!stack.isEmpty()) {
+            int node = stack.pop();
+            if (!visited[node]) {
+                visited[node] = true;
+
+                for (Road road : roads[node]) {
+                    if (!visited[road.node]) {
+                        stack.add(road.node);
+                        if (road.weight == 1)
+                            count++;
+                    }
+                }
             }
         }
+
         return count;
     }
 }
