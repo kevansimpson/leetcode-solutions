@@ -29,4 +29,15 @@ public class GraphDfsTests {
         assertEquals(1, provinces.findCircleNum(toNestedIntArray(
                 "[[1,0,0,1],[0,1,1,0],[0,1,1,1],[1,0,1,1]]")));
     }
+
+    @Test
+    public void testReorderRoutes() {
+        ReorderRoutes reorderRoutes = new ReorderRoutes();
+        assertEquals(3, reorderRoutes.minReorder(6, toNestedIntArray(
+                "[[0,1],[1,3],[2,3],[4,0],[4,5]]")));
+        assertEquals(2, reorderRoutes.minReorder(5, toNestedIntArray(
+                "[[1,0],[1,2],[3,2],[3,4]]")));
+        assertEquals(0, reorderRoutes.minReorder(3, toNestedIntArray(
+                "[[1,0],[2,0]]")));
+    }
 }
