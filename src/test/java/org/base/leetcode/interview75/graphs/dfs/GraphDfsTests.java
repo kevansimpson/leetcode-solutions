@@ -47,7 +47,24 @@ public class GraphDfsTests {
         assertArrayEquals(expected1, division.calcEquation(
                 toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"]]"),
                 new double[] {2.0, 3.0},
-                toNestedList("[[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]")
-        ));
+                toNestedList("[[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]")));
+
+        double[] expected2 = new double[] {3.75000,0.40000,5.00000,0.20000};
+        assertArrayEquals(expected2, division.calcEquation(
+                toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"],[\"bc\",\"cd\"]]"),
+                new double[] {1.5,2.5,5.0},
+                toNestedList("[[\"a\",\"c\"],[\"c\",\"b\"],[\"bc\",\"cd\"],[\"cd\",\"bc\"]]")));
+
+        double[] expected3 = new double[] {0.50000,2.00000,-1.00000,-1.00000};
+        assertArrayEquals(expected3, division.calcEquation(
+                toNestedList("[[\"a\",\"b\"]]"),
+                new double[] {0.5},
+                toNestedList("[[\"a\",\"b\"],[\"b\",\"a\"],[\"a\",\"c\"],[\"x\",\"y\"]]")));
+
+        double[] expected4 = new double[] {1.33333,1.00000,-1.00000};
+        assertArrayEquals(expected4, division.calcEquation(
+                toNestedList("[[\"a\",\"e\"],[\"b\",\"e\"]]"),
+                new double[] {4.0,3.0},
+                toNestedList("[[\"a\",\"b\"],[\"e\",\"e\"],[\"x\",\"x\"]]")));
     }
 }
