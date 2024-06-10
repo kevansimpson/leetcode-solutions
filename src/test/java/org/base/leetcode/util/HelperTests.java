@@ -52,6 +52,14 @@ public class HelperTests {
                 toNestedIntList("[[1,3],[3,0,1],[2],[0]]"));
     }
 
+    @Test
+    public void testToNestedList() {
+        assertEquals(List.of(List.of("a","b"), List.of("b","c")),
+                toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"]]"));
+        assertEquals(List.of(List.of("a","c"), List.of("b","a"), List.of("a","e"), List.of("a","a"), List.of("x","x")),
+                toNestedList("[[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]"));
+    }
+
     public static <T> void assertNestedArrayEquals(T[][] expected, T[][] actual) {
         assertEquals(expected.length, actual.length);
         for (int i = 0; i < actual.length; i++) {

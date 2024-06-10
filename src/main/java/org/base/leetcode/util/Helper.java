@@ -54,11 +54,20 @@ public class Helper {
     }
 
     public static List<List<Integer>> toNestedIntList(String str) {
-        String[][] arr = toNestedArray(str);
-        List<List<Integer>> list = new ArrayList<>();
+        return toNestedList(str, Integer::parseInt);
+    }
+
+    public static List<List<String>> toNestedList(String str) {
+        return toNestedList(str, Function.identity());
+    }
+
+    public static <T> List<List<T>> toNestedList(
+            String str, Function<String, T> fxn) {
+        String[][] arr = toNestedArray(str.replaceAll("\"", ""));
+        List<List<T>> list = new ArrayList<>();
         for (String[] strings : arr) {
-            List<Integer> nest = new ArrayList<>();
-            for (String string : strings) nest.add(Integer.parseInt(string));
+            List<T> nest = new ArrayList<>();
+            for (String string : strings) nest.add(fxn.apply(string));
             list.add(nest);
         }
         return list;
