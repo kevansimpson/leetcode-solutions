@@ -2,8 +2,7 @@ package org.base.leetcode.interview75.graphs.dfs;
 
 import org.junit.jupiter.api.Test;
 
-import static org.base.leetcode.util.Helper.toNestedIntArray;
-import static org.base.leetcode.util.Helper.toNestedIntList;
+import static org.base.leetcode.util.Helper.*;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
@@ -39,5 +38,16 @@ public class GraphDfsTests {
                 "[[1,0],[1,2],[3,2],[3,4]]")));
         assertEquals(0, reorderRoutes.minReorder(3, toNestedIntArray(
                 "[[1,0],[2,0]]")));
+    }
+
+    @Test
+    public void testEvaluateDivision() {
+        EvaluateDivision division = new EvaluateDivision();
+        double[] expected1 = new double[] {6.00000,0.50000,-1.00000,1.00000,-1.00000};
+        assertArrayEquals(expected1, division.calcEquation(
+                toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"]]"),
+                new double[] {2.0, 3.0},
+                toNestedList("[[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]")
+        ));
     }
 }
