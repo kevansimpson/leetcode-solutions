@@ -66,5 +66,11 @@ public class GraphDfsTests {
                 toNestedList("[[\"a\",\"e\"],[\"b\",\"e\"]]"),
                 new double[] {4.0,3.0},
                 toNestedList("[[\"a\",\"b\"],[\"e\",\"e\"],[\"x\",\"x\"]]")));
+
+        double[] expected5 = new double[] {360.00000,0.00833,20.00000,1.00000,-1.00000,-1.00000};
+        assertArrayEquals(expected5, division.calcEquation(
+                toNestedList("[[\"x1\",\"x2\"],[\"x2\",\"x3\"],[\"x3\",\"x4\"],[\"x4\",\"x5\"]]"),
+                new double[] {3.0,4.0,5.0,6.0},
+                toNestedList("[[\"x1\",\"x5\"],[\"x5\",\"x2\"],[\"x2\",\"x4\"],[\"x2\",\"x2\"],[\"x2\",\"x9\"],[\"x9\",\"x9\"]]")));
     }
 }
