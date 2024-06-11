@@ -43,34 +43,35 @@ public class GraphDfsTests {
     @Test
     public void testEvaluateDivision() {
         EvaluateDivision division = new EvaluateDivision();
-        double[] expected1 = new double[] {6.00000,0.50000,-1.00000,1.00000,-1.00000};
-        assertArrayEquals(expected1, division.calcEquation(
+        assertArrayEquals(new double[] {6.00000,0.50000,-1.00000,1.00000,-1.00000}, division.calcEquation(
                 toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"]]"),
                 new double[] {2.0, 3.0},
                 toNestedList("[[\"a\",\"c\"],[\"b\",\"a\"],[\"a\",\"e\"],[\"a\",\"a\"],[\"x\",\"x\"]]")));
 
-        double[] expected2 = new double[] {3.75000,0.40000,5.00000,0.20000};
-        assertArrayEquals(expected2, division.calcEquation(
+        assertArrayEquals(new double[] {3.75000,0.40000,5.00000,0.20000}, division.calcEquation(
                 toNestedList("[[\"a\",\"b\"],[\"b\",\"c\"],[\"bc\",\"cd\"]]"),
                 new double[] {1.5,2.5,5.0},
                 toNestedList("[[\"a\",\"c\"],[\"c\",\"b\"],[\"bc\",\"cd\"],[\"cd\",\"bc\"]]")));
 
-        double[] expected3 = new double[] {0.50000,2.00000,-1.00000,-1.00000};
-        assertArrayEquals(expected3, division.calcEquation(
+        assertArrayEquals(new double[] {0.50000,2.00000,-1.00000,-1.00000}, division.calcEquation(
                 toNestedList("[[\"a\",\"b\"]]"),
                 new double[] {0.5},
                 toNestedList("[[\"a\",\"b\"],[\"b\",\"a\"],[\"a\",\"c\"],[\"x\",\"y\"]]")));
 
-        double[] expected4 = new double[] {1.33333,1.00000,-1.00000};
-        assertArrayEquals(expected4, division.calcEquation(
+        assertArrayEquals(new double[] {1.33333,1.00000,-1.00000}, division.calcEquation(
                 toNestedList("[[\"a\",\"e\"],[\"b\",\"e\"]]"),
                 new double[] {4.0,3.0},
                 toNestedList("[[\"a\",\"b\"],[\"e\",\"e\"],[\"x\",\"x\"]]")));
 
-        double[] expected5 = new double[] {360.00000,0.00833,20.00000,1.00000,-1.00000,-1.00000};
-        assertArrayEquals(expected5, division.calcEquation(
+        assertArrayEquals(new double[] {360.00000,0.00833,20.00000,1.00000,-1.00000,-1.00000}, division.calcEquation(
                 toNestedList("[[\"x1\",\"x2\"],[\"x2\",\"x3\"],[\"x3\",\"x4\"],[\"x4\",\"x5\"]]"),
                 new double[] {3.0,4.0,5.0,6.0},
                 toNestedList("[[\"x1\",\"x5\"],[\"x5\",\"x2\"],[\"x2\",\"x4\"],[\"x2\",\"x2\"],[\"x2\",\"x9\"],[\"x9\",\"x9\"]]")));
+
+        assertArrayEquals(new double[] {1.13333,16.80000,1.50000,1.00000,0.05952,2.26667, 0.44118,-1.00000,-1.00000},
+                division.calcEquation(
+                        toNestedList("[[\"x1\",\"x2\"],[\"x2\",\"x3\"],[\"x1\",\"x4\"],[\"x2\",\"x5\"]]"),
+                        new double[] {3.0,0.5,3.4,5.6},
+                        toNestedList("[[\"x2\",\"x4\"],[\"x1\",\"x5\"],[\"x1\",\"x3\"],[\"x5\",\"x5\"],[\"x5\",\"x1\"],[\"x3\",\"x4\"],[\"x4\",\"x3\"],[\"x6\",\"x6\"],[\"x0\",\"x0\"]]")));
     }
 }

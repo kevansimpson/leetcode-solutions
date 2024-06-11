@@ -9,65 +9,88 @@ import java.util.*;
  *     399. Evaluate Division</a>
  * <p>
  *     Stats:
- *     Runtime:   34ms  (87.33%)
- *     Memory: 69.41mb  (76.14%)
+ *     Runtime:    3ms  (13.55%)
+ *     Memory: 41.66mb  (95.19%)
  * </p>
  */
 public class EvaluateDivision {
-    public record Equation(Fraction fraction, double value) {}
-    public record Fraction(String num, String div) {}
+    public record Equation(String variable, double value) {}
 
+    private double calculated;
     public double[] calcEquation(List<List<String>> equations, double[] values, List<List<String>> queries) {
-        Map<Fraction, Double> variables = new HashMap<>();
-        Map<String, Deque<Equation>> graph = new TreeMap<>();
+        Map<String, List<Equation>> graph = new HashMap<>();
         for (int i = 0; i < equations.size(); i++) {
-            String num = equations.get(i).get(0), div = equations.get(i).get(1);
-            variables.put(new Fraction(num, div), values[i]);
-            variables.put(new Fraction(div, num), 1.0 / values[i]);
-            variables.put(new Fraction(num, num), 1.0);
-            variables.put(new Fraction(div, div), 1.0);
-            graph.putIfAbsent(num, new LinkedList<>());
-            graph.putIfAbsent(div, new LinkedList<>());
-            graph.get(num).add(new Equation(new Fraction(num, div), values[i]));
+            List<String> list = equations.get(i);
+            String num = list.get(0);
+            String div = list.get(1);
+            graph.putIfAbsent(num, new ArrayList<>());
+            graph.putIfAbsent(div, new ArrayList<>());
+            graph.get(num).add(new Equation(div, values[i]));
+            graph.get(div).add(new Equation(num, 1.0 / values[i]));
         }
 
         double[] answers = new double[queries.size()];
         for (int i = 0; i < queries.size(); i++) {
-            String num = queries.get(i).get(0), div = queries.get(i).get(1);
-            Fraction query = new Fraction(num, div);
-            answers[i] = BigDecimal.valueOf(resolve(query, variables, graph))
-                    .setScale(5, RoundingMode.HALF_EVEN).doubleValue();
-            variables.put(query, answers[i]);
+            List<String> list = queries.get(i);
+            String num = list.get(0);
+            String div = list.get(1);
+            if (!graph.containsKey(num) || !graph.containsKey(div)) {
+                answers[i] = -1.0;
+                continue;
+            }
+
+            calculated = -1.0;
+            resolve(num, div, 1.0, new HashSet<>(), graph);
+            answers[i] = BigDecimal.valueOf(calculated).setScale(5, RoundingMode.HALF_EVEN).doubleValue();
         }
 
         return answers;
     }
 
-    double resolve(Fraction query, Map<Fraction, Double> variables, Map<String, Deque<Equation>> graph) {
-        // numerator and denominator must be defined
-        if (graph.containsKey(query.num) && graph.containsKey(query.div)) {
-            if (variables.containsKey(query))
-                return variables.get(query);
-            else {
-                Fraction reciprocal = new Fraction(query.div, query.num);
-                if (variables.containsKey(reciprocal))
-                    return 1.0 / variables.get(reciprocal);
-            }
-
-            for (Equation equation : graph.get(query.num))
-                if (!query.div.equals(equation.fraction.div)) {
-                    Fraction left = new Fraction(query.num, equation.fraction.div);
-                    Fraction right = new Fraction(equation.fraction.div, query.div);
-
-                    double leftVal = resolve(left, variables, graph);
-                    variables.put(left, leftVal);
-                    double rightVal = resolve(right, variables, graph);
-                    variables.put(right, rightVal);
-                    return leftVal * rightVal;
-                }
-
+    void resolve(String num, String div, double value, Set<String> visited, Map<String, List<Equation>> graph) {
+        if (num.equals(div)) {
+            calculated = value;
+            return;
         }
 
-        return -1.0;
+        visited.add(num);
+        for (Equation equation : graph.get(num)) {
+            if (!visited.contains(equation.variable))
+                resolve(equation.variable, div, value * equation.value, visited, graph);
+        }
     }
 }
+/*
+equations = [["a","b"],["b","c"]]
+values = [2.0,3.0]
+queries = [["a","c"],["b","a"],["a","e"],["a","a"],["x","x"]]
+
+a = [(a/b,2.0)]
+
+b = [(b/a,0.5),(b/c,3.0)]
+
+c = [(c/b,1/3)]
+
+stack = [a/c]
+ */
+
+/*
+[["x1","x2"],["x2","x3"],["x3","x4"],["x4","x5"]]
+values =[3.0,4.0,5.0,6.0]
+queries =[["x1","x5"],["x5","x2"],["x2","x4"],["x2","x2"],["x2","x9"],["x9","x9"]]
+
+x1 = [(x2,3.0)]
+
+x2 = [(x1, 1/3), (x3,4.0)]
+
+x3 = [(x2, 1/4), (x4,5.0)]
+
+x4 = [(x3, 1/5), (x5,6.0)]
+
+x5 = [(x4, 1/6)]
+
+stack = [x2] - weight: 3.0
+        [x3] - 12.0
+        [x4] - 60.0
+        [x5] - 360.0 // return
+ */
