@@ -9,7 +9,6 @@ package org.base.leetkode.interview75.graphs.bfs
  *     Memory: 45.85mb (93.15%)
  * </p>
  */
-
 class NearestExit {
     fun nearestExit(maze: Array<CharArray>, entrance: IntArray): Int {
         val paths = mutableListOf(entrance[0] to entrance[1])
