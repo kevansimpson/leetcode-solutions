@@ -46,33 +46,3 @@ public class NearestExit {
         return -1;
     }
 }
-/*
-        val paths = mutableListOf(entrance[0] to entrance[1])
-        var steps = -1
-        val m = maze.size
-        val n = maze[0].size
-
-        while (paths.isNotEmpty()) {
-            steps++
-            val next = paths.toList().also { paths.clear() }
-            for (point in next) {
-                val x = point.second
-                val y = point.first
-                if (x == 0 || x >= n - 1 || y == 0 || y >= m - 1)
-                    if (!(y == entrance[0] && x == entrance[1]))
-                        return steps
-
-                for (xy in 0..3) {
-                    val dx = x + moveX[xy]
-                    val dy = y + moveY[xy]
-                    if (dx in 0..<n && dy >= 0 && dy < m && '.' == maze[dy][dx]) {
-                        paths.add(dy to dx)
-                        maze[dy][dx] = 'v'
-                    }
-                }
-            }
-        }
-
-        return -1
-
- */
