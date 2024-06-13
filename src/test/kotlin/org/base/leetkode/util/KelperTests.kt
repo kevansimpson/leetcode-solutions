@@ -1,7 +1,7 @@
-package org.base.leetcode.util
+package org.base.leetkode.util
 
-import org.base.leetcode.util.Kelper.toCharArray
-import org.base.leetcode.util.Kelper.toNestedCharArray
+import org.base.leetkode.util.Kelper.toCharArray
+import org.base.leetkode.util.Kelper.toNestedCharArray
 import org.junit.jupiter.api.Assertions.assertArrayEquals
 import org.junit.jupiter.api.Test
 

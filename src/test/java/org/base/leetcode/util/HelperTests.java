@@ -25,6 +25,15 @@ public class HelperTests {
     }
 
     @Test
+    public void testToNestedCharArray() {
+        char[][] expected1 = new char[][] { {'1'}, {'2'}, {'3'}, {} };
+        assertArrayEquals(expected1, toNestedCharArray("[[1],[2],[3],[]]"));
+
+        char[][] expected2 = new char[][] { {'1','3'}, {'3','0','1'}, {'2'}, {'0'} };
+        assertArrayEquals(expected2, toNestedCharArray("[[1,3],[3,0,1],[2],[0]]"));
+    }
+
+    @Test
     public void testToNestedIntArray() {
         int[][] expected1 = new int[][]{{1,1,0},{1,1,0},{0,0,1}};
         assertArrayEquals(expected1, toNestedIntArray("[[1,1,0],[1,1,0],[0,0,1]]"));

@@ -1,6 +1,6 @@
-package org.base.leetcode.interview75.graphs.bfs
+package org.base.leetkode.interview75.graphs.bfs
 
-import org.base.leetcode.util.Kelper.toNestedCharArray
+import org.base.leetkode.util.Kelper.toNestedCharArray
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

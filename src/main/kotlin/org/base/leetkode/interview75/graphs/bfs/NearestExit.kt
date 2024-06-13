@@ -1,4 +1,4 @@
-package org.base.leetcode.interview75.graphs.bfs
+package org.base.leetkode.interview75.graphs.bfs
 
 /**
  * <a href="https://leetcode.com/problems/nearest-exit-from-entrance-in-maze/submissions/1286458990/?envType=study-plan-v2&envId=leetcode-75">

@@ -22,6 +22,18 @@ public class Helper {
         return matrix;
     }
 
+    public static char[][] toNestedCharArray(String str) {
+        String[][] arr = toNestedArray(str.replaceAll("\"", ""));
+        char[][] matrix = new char[arr.length][];
+        for (int i = 0; i < arr.length; i++) {
+            char[] ch = new char[arr[i].length];
+            for (int j = 0; j < arr[i].length; j++)
+                ch[j] = arr[i][j].charAt(0);
+            matrix[i] = ch;
+        }
+
+        return matrix;
+    }
 
     public static int[][] toNestedIntArray(String str) {
         str = str.substring(2, str.length() - 2);

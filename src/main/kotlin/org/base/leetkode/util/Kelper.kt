@@ -1,4 +1,4 @@
-package org.base.leetcode.util
+package org.base.leetkode.util
 
 object Kelper {
     private val bracketSplit = "],\\[".toRegex()
