@@ -33,5 +33,7 @@ public class GraphBfsTests {
                 toNestedIntArray("[[2,1,1],[0,1,1],[1,0,1]]")));
         assertEquals(0, rotting.orangesRotting(
                 toNestedIntArray("[[0,2]]")));
+        assertEquals(1, rotting.orangesRotting(
+                toNestedIntArray("[[2,2],[1,1],[0,0],[2,0]]")));
     }
 }

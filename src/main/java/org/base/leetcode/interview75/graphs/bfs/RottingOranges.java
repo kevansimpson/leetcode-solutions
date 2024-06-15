@@ -12,62 +12,49 @@ import java.util.*;
  * </p>
  */
 public class RottingOranges {
-    private static final int[] moveX = new int[] {0, 1, 0, -1};
-    private static final int[] moveY = new int[] {1, 0, -1, 0};
-
-    public record Point(int y, int x) {}
+    public record Orange(int y, int x) {}
 
     public int orangesRotting(int[][] grid) {
         int m = grid.length, n = grid[0].length;
-        Set<Point> fresh = new HashSet<>();
-        for (int y = 0; y < m; y++)
-            for (int x = 0; x < n; x++)
-                if (grid[y][x] == 1)
-                    fresh.add(new Point(y, x));
+        int maxY = m - 1, maxX = n - 1;
+        int fresh = 0;
+        Set<Orange> rotten = new HashSet<>();
+        for (int y = 0; y <= maxY; y++)
+            for (int x = 0; x <= maxX; x++)
+                switch (grid[y][x]) {
+                    case 1 -> fresh++;
+                    case 2 -> rotten.add(new Orange(y, x));
+                }
 
-        if (fresh.isEmpty()) // no fresh oranges
+        if (fresh == 0) // no fresh oranges
             return 0;
+        else if (rotten.isEmpty()) // no rotten
+            return -1;
 
-        int steps = 0;
-        while (!fresh.isEmpty()) {
-            Set<Point> rotted = new HashSet<>();
-            steps++;
-            for (Point pt : fresh) {
-                for (int i = 0; i < 4; i++) {
-                    int dy = pt.y + moveY[i];
-                    int dx = pt.x + moveX[i];
-                    if (dy >= 0 && dy < m && dx >=0 && dx < n) { // in grid
-                        if (grid[dy][dx] == 2) { // rotten neighbor
-                            rotted.add(pt);
-                        }
-                    }
-                }
+        Set<Orange> visited = new HashSet<>();
+        fresh = -1;
+        while (!rotten.isEmpty()) {
+            fresh++;
+            Set<Orange> next = new HashSet<>();
+            for (Orange o : rotten) {
+                visited.add(o);
+                if (o.y > 0 && grid[o.y - 1][o.x] == 1)
+                    next.add(new Orange(o.y - 1, o.x));
+                if (o.y < maxY && grid[o.y + 1][o.x] == 1)
+                    next.add(new Orange(o.y + 1, o.x));
+                if (o.x > 0 && grid[o.y][o.x - 1] == 1)
+                    next.add(new Orange(o.y, o.x - 1));
+                if (o.x < maxX && grid[o.y][o.x + 1] == 1)
+                    next.add(new Orange(o.y, o.x + 1));
             }
-
-            if (rotted.isEmpty()) {
-                for (Point safe : fresh)
-                    if (isOrangeSafe(safe.y, safe.x, m, n, grid))
-                        return -1;
-            }
-            else
-                for (Point rot : rotted) {
-                    fresh.remove(rot);
-                    grid[rot.y][rot.x] = 2;
-                }
+            next.removeAll(visited);
+            rotten = next;
         }
+        for (int y = 0; y <= maxY; y++)
+            for (int x = 0; x <= maxX; x++)
+                if (grid[y][x] == 1 && !visited.contains(new Orange(y, x)))
+                    return -1;
 
-        return steps;
-    }
-
-    boolean isOrangeSafe(int y, int x, int m, int n, int[][] grid) {
-        for (int i = 0; i < 4; i++) {
-            int dy = y + moveY[i];
-            int dx = x + moveX[i];
-            if (dy >= 0 && dy < m && dx >= 0 && dx < n) { // in grid
-                if (grid[dy][dx] == 2)
-                    return false;
-            }
-        }
-        return true;
+        return fresh;
     }
 }
