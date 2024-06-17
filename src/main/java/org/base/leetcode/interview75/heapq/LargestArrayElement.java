@@ -3,8 +3,8 @@ package org.base.leetcode.interview75.heapq;
 import java.util.PriorityQueue;
 
 /**
- * <a href="https://leetcode.com/problems/rotting-oranges/description/?envType=study-plan-v2&envId=leetcode-75">
- *     994. Rotting Oranges</a>
+ * <a href="https://leetcode.com/problems/kth-largest-element-in-an-array/?envType=study-plan-v2&envId=leetcode-75">
+ *     215. Kth Largest Element in an Array</a>
  * <p>
  *     Stats:
  *     Runtime:   61ms (45.97%)
