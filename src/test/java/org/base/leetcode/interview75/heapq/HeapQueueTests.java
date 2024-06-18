@@ -32,4 +32,15 @@ public class HeapQueueTests {
         // return 5, and remove it from the set.
         assertEquals(5, set.popSmallest());
     }
+
+    @Test
+    public void testMaxSubsequenceScore() {
+        MaxSubsequenceScore score = new MaxSubsequenceScore();
+        assertEquals(12, score.maxScore(
+                toIntArray("[1,3,3,2]"), toIntArray("[2,1,3,4]"), 3));
+        assertEquals(30, score.maxScore(
+                toIntArray("[4,2,3,1,1]"), toIntArray("[7,5,10,9,6]"), 1));
+        assertEquals(168, score.maxScore(
+                toIntArray("[2,1,14,12]"), toIntArray("[11,7,13,6]"), 3));
+    }
 }
