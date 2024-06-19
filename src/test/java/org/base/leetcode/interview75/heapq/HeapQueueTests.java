@@ -48,4 +48,18 @@ public class HeapQueueTests {
                 toIntArray(readTestInput("/maxSubsequenceScore_testCase4_part1.txt")),
                 3));
     }
+
+    @Test
+    public void testTotalCostWorkers() {
+        TotalCostWorkers cost = new TotalCostWorkers();
+        assertEquals(11, cost.totalCost(toIntArray("[17,12,10,2,7,2,11,20,8]"), 3, 4));
+        assertEquals(4, cost.totalCost(toIntArray("[1,2,4,1]"), 3, 3));
+        assertEquals(423, cost.totalCost(toIntArray(
+                "[31,25,72,79,74,65,84,91,18,59,27,9,81,33,17,58]"), 11, 2));
+        assertEquals(223, cost.totalCost(toIntArray(
+                "[18,64,12,21,21,78,36,58,88,58,99,26,92,91,53,10,24,25,20,92,73,63,51,65,87,6,17,32,14,42,46,65,43,9,75]"),
+                13, 23));
+        assertEquals(526, cost.totalCost(toIntArray(
+                "[57,33,26,76,14,67,24,90,72,37,30]"), 11, 2));
+    }
 }
