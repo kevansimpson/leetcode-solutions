@@ -7,59 +7,47 @@ import java.util.*;
  *     2542. Maximum Subsequence Score</a>
  * <p>
  *     Stats:
- *     Runtime:   61ms (45.97%)
- *     Memory: 56.78mb (93.19%)
+ *     Runtime:   64ms (92.70%)
+ *     Memory: 62.52mb (67.96%)
  * </p>
  */
 public class MaxSubsequenceScore {
+    public record Pair(int num1, int num2) {}
+
     public long maxScore(int[] nums1, int[] nums2, int k) {
-//        System.out.println(Arrays.toString(nums1));
-//        System.out.println(Arrays.toString(nums2));
+        long max = -1;
         int n = nums1.length;
-
-        List<Integer> sorted = new ArrayList<>();
-        for (int num : nums1)
-            sorted.add(num);
-        sorted.sort(Comparator.reverseOrder());
-
-        for (int i = 0; i < nums1.length - 1; i++) {
-            int min = i;
-            for (int j = i + 1; j < nums1.length; j++) {
-                if (nums2[j] < nums2[min])
-                    min = j;
-            }
-            swap(nums1, min, i);
-            swap(nums2, min, i);
+        if (k == 1) {
+            for (int i = 0; i < n; i++)
+                max = Math.max(max, (long) nums1[i] * nums2[i]);
+            return max;
         }
 
-        System.out.println(Arrays.toString(nums1));
-        System.out.println(Arrays.toString(nums2));
-        System.out.println(sorted);
+        Pair[] pairs = new Pair[n];
+        for (int i = 0; i < n; i++)
+            pairs[i] = new Pair(nums1[i], nums2[i]);
 
-        long max = -1;
+        Arrays.sort(pairs, Comparator.comparingInt(p -> p.num2));
+
         long sum = 0;
-        for (int j = 0; j < k; j++)
-            sum += sorted.get(j);
-        for (int i = 0; i < n; i++) {
+        int threshold = n - k;
+        PriorityQueue<Integer> queue = new PriorityQueue<>();
+        for (int i = n - 1; i >= 0; i--) {
+            Pair p = pairs[i];
+            if (i <= threshold)
+                max = Math.max(max, (sum + p.num1) * p.num2);
 
-            max = Math.max(max, sum * nums2[i]);
-            int ix = sorted.indexOf(nums1[i]);
-            sorted.remove(ix);
-            if (sorted.size() < k)
-                break;
-            else if (ix < k) {
-                sum = 0;
-                for (int j = 0; j < k; j++)
-                    sum += sorted.get(j);
+            if (queue.size() < k - 1) {
+                sum += p.num1;
+                queue.add(p.num1);
+            }
+            else if (p.num1 > queue.peek()) {
+                sum -= queue.poll();
+                sum += p.num1;
+                queue.add(p.num1);
             }
         }
         return max;
-    }
-
-    void swap(int[] arr, int ix1, int ix2) {
-        int temp = arr[ix1];
-        arr[ix1] = arr[ix2];
-        arr[ix2] = temp;
     }
 }
 /*
