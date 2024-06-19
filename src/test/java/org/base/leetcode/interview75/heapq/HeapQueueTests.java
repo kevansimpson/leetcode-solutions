@@ -3,6 +3,7 @@ package org.base.leetcode.interview75.heapq;
 import org.junit.jupiter.api.Test;
 
 import static org.base.leetcode.util.Helper.toIntArray;
+import static org.base.leetcode.util.TestCaseReader.readTestInput;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HeapQueueTests {
@@ -42,5 +43,9 @@ public class HeapQueueTests {
                 toIntArray("[4,2,3,1,1]"), toIntArray("[7,5,10,9,6]"), 1));
         assertEquals(168, score.maxScore(
                 toIntArray("[2,1,14,12]"), toIntArray("[11,7,13,6]"), 3));
+        assertEquals(29997900036L, score.maxScore(
+                toIntArray(readTestInput("/maxSubsequenceScore_testCase4_part1.txt")),
+                toIntArray(readTestInput("/maxSubsequenceScore_testCase4_part1.txt")),
+                3));
     }
 }
