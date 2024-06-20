@@ -14,7 +14,8 @@ public class BinarySearchTests {
                 toIntArray("[5,1,3]"), toIntArray("[1,2,3,4,5]"), 7));
         assertArrayEquals(toIntArray("[2,0,2]"), pairs.successfulPairs(
                 toIntArray("[3,1,2]"), toIntArray("[8,5,8]"), 16));
-        assertArrayEquals(toIntArray("[2,0,2]"), pairs.successfulPairs(
+        assertArrayEquals(
+                toIntArray(readTestInput("/successfulPairs_testCase3_expected.txt")), pairs.successfulPairs(
                 toIntArray(readTestInput("/successfulPairs_testCase3_spells.txt")),
                 toIntArray(readTestInput("/successfulPairs_testCase3_potions.txt")),
                 5433930978L));
