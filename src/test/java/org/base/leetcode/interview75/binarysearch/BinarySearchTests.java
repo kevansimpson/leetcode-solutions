@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.base.leetcode.util.Helper.toIntArray;
 import static org.base.leetcode.util.TestCaseReader.readTestInput;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BinarySearchTests {
     @Test
@@ -19,5 +20,12 @@ public class BinarySearchTests {
                 toIntArray(readTestInput("/successfulPairs_testCase3_spells.txt")),
                 toIntArray(readTestInput("/successfulPairs_testCase3_potions.txt")),
                 5433930978L));
+    }
+
+    @Test
+    public void testFindPeakElement() {
+        FindPeakElement find = new FindPeakElement();
+        assertEquals(2, find.findPeakElement(toIntArray("[1,2,3,1]")));
+        assertEquals(5, find.findPeakElement(toIntArray("[1,2,1,3,5,6,4]")));
     }
 }
