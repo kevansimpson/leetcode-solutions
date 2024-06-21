@@ -28,4 +28,12 @@ public class BinarySearchTests {
         assertEquals(2, find.findPeakElement(toIntArray("[1,2,3,1]")));
         assertEquals(5, find.findPeakElement(toIntArray("[1,2,1,3,5,6,4]")));
     }
+
+    @Test
+    public void testKokoEatingBananas() {
+        KokoEatingBananas koko = new KokoEatingBananas();
+        assertEquals(4, koko.minEatingSpeed(toIntArray("[3,6,7,11]"), 8));
+        assertEquals(30, koko.minEatingSpeed(toIntArray("[30,11,23,4,20]"), 5));
+        assertEquals(23, koko.minEatingSpeed(toIntArray("[30,11,23,4,20]"), 6));
+    }
 }
