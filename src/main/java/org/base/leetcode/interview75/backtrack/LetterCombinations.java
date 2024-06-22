@@ -10,7 +10,7 @@ import java.util.Map;
  * <p>
  *     Stats:
  *     Runtime:    1ms (66.91%)
- *     Memory: 41.90mb (72.96%)
+ *     Memory: 41.66mb (91.54%)
  * </p>
  */
 public class LetterCombinations {
@@ -42,36 +42,5 @@ public class LetterCombinations {
                 mapDigits(current + letter, index + 1, digits, combos);
             }
         }
-    }
-
-    public int minEatingSpeed(int[] piles, int h) {
-        int right = piles[0];
-        for (int i = 1; i < piles.length; i++)
-            right = Math.max(right, piles[i]);
-
-
-        int left = 1, speed = -1;
-        while (left <= right) {
-            int mid = (left + right) / 2;
-            if (finishBananas(piles, h, mid)) {
-                right = mid - 1;
-                speed = mid;
-            }
-            else
-                left = mid + 1;
-        }
-
-        return speed;
-    }
-
-    boolean finishBananas(int[] piles, int hours, int rate) {
-        if (rate <= 0)
-            return false;
-
-        int ix = 0;
-        while (hours >= 0 && ix < piles.length) {
-            hours -= Math.ceilDiv(piles[ix++], rate);
-        }
-        return hours >= 0 && ix == piles.length;
     }
 }
