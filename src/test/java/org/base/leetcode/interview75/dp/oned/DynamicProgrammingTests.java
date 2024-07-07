@@ -7,7 +7,9 @@ import org.junit.jupiter.api.Test;
 import java.util.Collections;
 import java.util.List;
 
+import static org.base.leetcode.util.Helper.toIntArray;
 import static org.base.leetcode.util.Helper.toNestedIntList;
+import static org.base.leetcode.util.TestCaseReader.readTestInput;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DynamicProgrammingTests {
@@ -19,12 +21,15 @@ public class DynamicProgrammingTests {
     }
 
     @Test
-    public void testCombinationSum3() {
-        CombinationSum3 sum3 = new CombinationSum3();
-        assertEquals(toNestedIntList("[[1,2,4]]"), sum3.combinationSum3(3, 7));
-        assertEquals(toNestedIntList("[[1,2,6],[1,3,5],[2,3,4]]"), sum3.combinationSum3(3, 9));
-        assertEquals(Collections.emptyList(), sum3.combinationSum3(4, 1));
-        assertEquals(toNestedIntList("[[1,5,9],[1,6,8],[2,4,9],[2,5,8],[2,6,7],[3,4,8],[3,5,7],[4,5,6]]"),
-                sum3.combinationSum3(3, 15));
+    public void testMinCostClimbingStairs() {
+        MinCostClimbingStairs minCost = new MinCostClimbingStairs();
+        assertEquals(15, minCost.minCostClimbingStairs(toIntArray(
+                "[10,15,20]")));
+        assertEquals(6, minCost.minCostClimbingStairs(toIntArray(
+                "[1,100,1,1,1,100,1,1,100,1]")));
+        assertEquals(2, minCost.minCostClimbingStairs(toIntArray(
+                "[0,1,2,2]")));
+        assertEquals(209040, minCost.minCostClimbingStairs(toIntArray(readTestInput(
+                "/minCostClimbingStairs_testCase4_input.txt"))));
     }
 }
