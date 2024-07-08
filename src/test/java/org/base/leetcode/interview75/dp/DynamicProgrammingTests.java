@@ -1,7 +1,12 @@
-package org.base.leetcode.interview75.dp.oned;
+package org.base.leetcode.interview75.dp;
 
 import org.base.leetcode.interview75.backtrack.CombinationSum3;
 import org.base.leetcode.interview75.backtrack.LetterCombinations;
+import org.base.leetcode.interview75.dp.multid.UniquePaths;
+import org.base.leetcode.interview75.dp.oned.DominoTiling;
+import org.base.leetcode.interview75.dp.oned.HouseRobber;
+import org.base.leetcode.interview75.dp.oned.MinCostClimbingStairs;
+import org.base.leetcode.interview75.dp.oned.Tribonacci;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
@@ -51,5 +56,12 @@ public class DynamicProgrammingTests {
         assertEquals(11, tiling.numTilings(4));
         assertEquals(24, tiling.numTilings(5));
         assertEquals(882347204, tiling.numTilings(60));
+    }
+
+    @Test
+    public void testUniquePaths() {
+        UniquePaths paths = new UniquePaths();
+        assertEquals(28, paths.uniquePaths(3, 7));
+        assertEquals(3, paths.uniquePaths(3, 2));
     }
 }

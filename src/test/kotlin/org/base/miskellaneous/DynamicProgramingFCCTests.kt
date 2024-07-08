@@ -34,6 +34,7 @@ class DynamicProgramingFCCTests {
         assertEquals(3, gridTravelerMemo(2, 3))
         assertEquals(3, gridTravelerMemo(3, 2))
         assertEquals(6, gridTravelerMemo(3, 3))
+        assertEquals(28, gridTravelerMemo(3, 7))
         assertEquals(2333606220, gridTravelerMemo(18, 18))
     }
 
@@ -43,6 +44,7 @@ class DynamicProgramingFCCTests {
         assertEquals(3, gridTravelerTab(2, 3))
         assertEquals(3, gridTravelerTab(3, 2))
         assertEquals(6, gridTravelerTab(3, 3))
+        assertEquals(28, gridTravelerTab(3, 7))
         assertEquals(2333606220, gridTravelerTab(18, 18))
     }
 
