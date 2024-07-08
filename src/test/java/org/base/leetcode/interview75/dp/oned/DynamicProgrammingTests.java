@@ -42,4 +42,14 @@ public class DynamicProgrammingTests {
         assertEquals(1, robber.rob(toIntArray("[1,1]")));
         assertEquals(4, robber.rob(toIntArray("[2,1,1,2]")));
     }
+
+    @Test
+    public void testDominoTiling() {
+        DominoTiling tiling = new DominoTiling();
+        assertEquals(5, tiling.numTilings(3));
+        assertEquals(1, tiling.numTilings(1));
+        assertEquals(11, tiling.numTilings(4));
+        assertEquals(24, tiling.numTilings(5));
+        assertEquals(882347204, tiling.numTilings(60));
+    }
 }
