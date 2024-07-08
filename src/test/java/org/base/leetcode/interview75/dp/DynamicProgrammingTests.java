@@ -1,7 +1,6 @@
 package org.base.leetcode.interview75.dp;
 
-import org.base.leetcode.interview75.backtrack.CombinationSum3;
-import org.base.leetcode.interview75.backtrack.LetterCombinations;
+import org.base.leetcode.interview75.dp.multid.LongestCommonSubsequence;
 import org.base.leetcode.interview75.dp.multid.UniquePaths;
 import org.base.leetcode.interview75.dp.oned.DominoTiling;
 import org.base.leetcode.interview75.dp.oned.HouseRobber;
@@ -9,11 +8,7 @@ import org.base.leetcode.interview75.dp.oned.MinCostClimbingStairs;
 import org.base.leetcode.interview75.dp.oned.Tribonacci;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collections;
-import java.util.List;
-
 import static org.base.leetcode.util.Helper.toIntArray;
-import static org.base.leetcode.util.Helper.toNestedIntList;
 import static org.base.leetcode.util.TestCaseReader.readTestInput;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -63,5 +58,14 @@ public class DynamicProgrammingTests {
         UniquePaths paths = new UniquePaths();
         assertEquals(28, paths.uniquePaths(3, 7));
         assertEquals(3, paths.uniquePaths(3, 2));
+    }
+
+
+    @Test
+    public void testLongestCommonSubsequence() {
+        LongestCommonSubsequence longest = new LongestCommonSubsequence();
+        assertEquals(3, longest.longestCommonSubsequence("abcde", "ace"));
+        assertEquals(3, longest.longestCommonSubsequence("abc", "abc"));
+        assertEquals(0, longest.longestCommonSubsequence("abc", "def"));
     }
 }
