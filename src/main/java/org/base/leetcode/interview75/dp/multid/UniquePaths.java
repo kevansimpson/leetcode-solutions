@@ -1,8 +1,8 @@
 package org.base.leetcode.interview75.dp.multid;
 
 /**
- * <a href="https://leetcode.com/problems/n-th-tribonacci-number/description/?envType=study-plan-v2&envId=leetcode-75">
- *     1137. N-th Tribonacci Number</a>
+ * <a href="https://leetcode.com/problems/unique-paths/?envType=study-plan-v2&envId=leetcode-75">
+ *     62. Unique Paths</a>
  * <p>
  *     Stats:
  *     Runtime:    0ms (100.00%)
