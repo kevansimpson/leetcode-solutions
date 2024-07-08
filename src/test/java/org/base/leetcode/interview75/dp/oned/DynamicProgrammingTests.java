@@ -32,4 +32,14 @@ public class DynamicProgrammingTests {
         assertEquals(209040, minCost.minCostClimbingStairs(toIntArray(readTestInput(
                 "/minCostClimbingStairs_testCase4_input.txt"))));
     }
+
+
+    @Test
+    public void testHouseRobber() {
+        HouseRobber robber = new HouseRobber();
+        assertEquals(4, robber.rob(toIntArray("[1,2,3,1]")));
+        assertEquals(12, robber.rob(toIntArray("[2,7,9,3,1]")));
+        assertEquals(1, robber.rob(toIntArray("[1,1]")));
+        assertEquals(4, robber.rob(toIntArray("[2,1,1,2]")));
+    }
 }
