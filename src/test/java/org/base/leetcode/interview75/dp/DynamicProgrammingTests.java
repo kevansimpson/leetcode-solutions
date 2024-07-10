@@ -1,6 +1,7 @@
 package org.base.leetcode.interview75.dp;
 
 import org.base.leetcode.interview75.dp.multid.LongestCommonSubsequence;
+import org.base.leetcode.interview75.dp.multid.MaxProfit;
 import org.base.leetcode.interview75.dp.multid.UniquePaths;
 import org.base.leetcode.interview75.dp.oned.DominoTiling;
 import org.base.leetcode.interview75.dp.oned.HouseRobber;
@@ -60,12 +61,18 @@ public class DynamicProgrammingTests {
         assertEquals(3, paths.uniquePaths(3, 2));
     }
 
-
     @Test
     public void testLongestCommonSubsequence() {
         LongestCommonSubsequence longest = new LongestCommonSubsequence();
         assertEquals(3, longest.longestCommonSubsequence("abcde", "ace"));
         assertEquals(3, longest.longestCommonSubsequence("abc", "abc"));
         assertEquals(0, longest.longestCommonSubsequence("abc", "def"));
+    }
+
+    @Test
+    public void testMaxProfit() {
+        MaxProfit maxProfit = new MaxProfit();
+        assertEquals(8, maxProfit.maxProfit(toIntArray("[1,3,2,8,4,9]"), 2));
+        assertEquals(6, maxProfit.maxProfit(toIntArray("[1,3,7,5,10,3]"), 3));
     }
 }
