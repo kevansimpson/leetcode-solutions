@@ -1,5 +1,6 @@
 package org.base.leetcode.interview75.dp;
 
+import org.base.leetcode.interview75.dp.multid.EditDistance;
 import org.base.leetcode.interview75.dp.multid.LongestCommonSubsequence;
 import org.base.leetcode.interview75.dp.multid.MaxProfit;
 import org.base.leetcode.interview75.dp.multid.UniquePaths;
@@ -74,5 +75,12 @@ public class DynamicProgrammingTests {
         MaxProfit maxProfit = new MaxProfit();
         assertEquals(8, maxProfit.maxProfit(toIntArray("[1,3,2,8,4,9]"), 2));
         assertEquals(6, maxProfit.maxProfit(toIntArray("[1,3,7,5,10,3]"), 3));
+    }
+
+    @Test
+    public void testEditDistance() {
+        EditDistance distance = new EditDistance();
+        assertEquals(3, distance.minDistance("horse", "ros"));
+        assertEquals(5, distance.minDistance("intention", "execution"));
     }
 }
