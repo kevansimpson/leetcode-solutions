@@ -22,4 +22,13 @@ public class BitManipulationTests {
         assertEquals(1, single.singleNumber(toIntArray("[1]")));
         assertEquals(-1, single.singleNumber(toIntArray("[-1]")));
     }
+
+    @Test
+    public void testMinimumFlips() {
+        MinimumFlips flips = new MinimumFlips();
+        assertEquals(3, flips.minFlips(2, 6, 5));
+        assertEquals(1, flips.minFlips(4, 2, 7));
+        assertEquals(0, flips.minFlips(1, 2, 3));
+        assertEquals(3, flips.minFlips(8, 3, 5));
+    }
 }
