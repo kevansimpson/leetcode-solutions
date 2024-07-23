@@ -1,6 +1,7 @@
 package org.base.leetcode.interview75.trie;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static java.util.Collections.emptyList;
@@ -10,14 +11,15 @@ import static java.util.Collections.emptyList;
  *     1268. Search Suggestions System</a>
  * <p>
  *     Stats:
- *     Runtime:   101ms  (18.46%)
- *     Memory:  51.48mb   (9.28%)
+ *     Runtime:    26ms  (55.51%)
+ *     Memory:  49.18mb  (29.74%)
  * </p>
  */
 public class SearchSuggestions {
     private static class TrieNode {
         final TrieNode[] trie = new TrieNode[26];
         boolean wordEnd = false;
+        final List<String> list = new ArrayList<>();
     }
 
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
@@ -27,15 +29,13 @@ public class SearchSuggestions {
 
         List<List<String>> suggestions = new ArrayList<>();
         TrieNode node = root;
-        String query = "";
         for (int i = 0; i < searchWord.length(); i++) {
             char ch = searchWord.charAt(i);
-            query += ch;
-            if (node != null) {
+            if (node != null)
                 node = node.trie[ch - 'a'];
-                List<String> words = new ArrayList<>();
-                suggest(query, node, words);
-                suggestions.add(words);
+            if (node != null) {
+                Collections.sort(node.list);
+                suggestions.add(node.list.subList(0, Math.min(3, node.list.size())));
             }
             else
                 suggestions.add(emptyList());
@@ -44,27 +44,14 @@ public class SearchSuggestions {
         return suggestions;
     }
 
-    void suggest(String query, TrieNode node, List<String> words) {
-        if (words.size() < 3 && node != null) {
-            if (node.wordEnd)
-                words.add(query);
-
-            for (int i = 0; i < 26; i++) {
-                TrieNode child = node.trie[i];
-                if (child != null) {
-                    suggest(query + (char) ('a' + i), child, words);
-                }
-            }
-        }
-    }
-
-    public void insert(TrieNode node, String word) {
+    void insert(TrieNode node, String word) {
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
             TrieNode child = node.trie[ch - 'a'];
             if (child == null)
                 node.trie[ch - 'a'] = (child = new TrieNode());
             node = child;
+            node.list.add(word);
         }
         node.wordEnd = true;
     }
