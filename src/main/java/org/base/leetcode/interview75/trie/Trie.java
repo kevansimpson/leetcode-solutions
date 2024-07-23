@@ -10,8 +10,8 @@ package org.base.leetcode.interview75.trie;
  * </p>
  */
 public class Trie {
-    private final Trie[] trie = new Trie[26];
-    private boolean wordEnd = false;
+    final Trie[] trie = new Trie[26];
+    boolean wordEnd = false;
 
     public Trie() {
 
